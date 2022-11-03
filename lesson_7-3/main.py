@@ -56,13 +56,29 @@
 # if 5 == 5:
 #     pass  # TODO: купить молока и дописать код
 
+# try:
+#     x = input("Введи имя:")
+#     if x == "Антон":
+#         raise Exception("Антона в обиду не дам")
+#         # raise - вызвать исключение, ошибку
+# except Exception as error_message:
+#     # as - сохранить ошибку в error_message
+#     print("Это слово запрещено!", error_message)
+
+
+ints = []
 try:
-    x = input("Введи имя:")
-    if x == "Антон":
-        raise Exception("Антона в обиду не дам")
-        # raise - вызвать исключение, ошибку
-except Exception as error_message:
-    # as - сохранить ошибку в error_message
-    print("Это слово запрещено!", error_message)
-
-
+    f = open("text.txt")
+except FileNotFoundError:
+    print("Ну, не получилось 😒")
+else:
+    try:
+        for line in f:
+            ints.append(int(line))
+    except ValueError:
+        print("Тут не число, закрой за мной дверь, я ухожу.")
+    else:  # если ошибок неть
+        print(ints)
+    finally: # ваще всегда
+        f.close()
+        print("Я закрыв фаел 😃")
